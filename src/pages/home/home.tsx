@@ -1,10 +1,7 @@
 import {
   Container,
-  Text,
   Button,
   Stack,
-  Group,
-  Box,
   Anchor,
   List,
   ListItem,
