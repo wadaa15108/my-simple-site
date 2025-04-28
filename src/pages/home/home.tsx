@@ -1,38 +1,18 @@
-import {
-  Container,
-  Button,
-  Stack,
-  Anchor,
-  List,
-  ListItem,
-} from "@mantine/core";
-import { GIT_URL } from "../../constants/link";
+import { Stack, Box } from "@mantine/core";
 import { HeroImage } from "./components/heroImage";
-import image from "/cat.jpg";
-import { BoldText } from "../../components/text/text";
+import image from "/hero.jpg";
+import { About } from "./components/about";
 
 export const Home = () => {
   return (
-    <Container size="lg" style={{ padding: "20px" }}>
-      <Stack align="center" gap="xs" style={{ marginBottom: "40px" }}>
+    <Box w="100%" bg="#f9f9f9">
+      <Stack align="center" mb="40px">
         <HeroImage text="Welcome To My Homepage" src={image} />
       </Stack>
 
-      <Stack style={{ marginBottom: "40px" }} align="center">
-        <BoldText>About</BoldText>
-        <List>
-          <ListItem>
-            このページはMantineの学習を目的として作成されています
-          </ListItem>
-          <ListItem>使用技術はTypescript/React/Mantineです</ListItem>
-        </List>
+      <Stack align="center" w="100%">
+        <About />
       </Stack>
-
-      <Stack align="center">
-        <Anchor href={GIT_URL} target="_blank">
-          <Button variant="outline">GitHub</Button>
-        </Anchor>
-      </Stack>
-    </Container>
+    </Box>
   );
 };
