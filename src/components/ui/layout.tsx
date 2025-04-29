@@ -1,10 +1,12 @@
-import { AppShell, Burger, Group, Text } from "@mantine/core";
+import { AppShell, Avatar, Burger, Group, Text } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 import { ReactNode } from "react";
 import { Navigation } from "./navigation";
 import { useMediaQuery } from "@mantine/hooks";
+import avatar from "/cat.jpg";
 
-const HEADER_HEIGHT = "60px";
+export const HEADER_HEIGHT = "60px";
+export const MAIN_HEIGHT = "100vh";
 
 export function Layout({
   title,
@@ -26,18 +28,26 @@ export function Layout({
       }}
       padding="md"
     >
-      <AppShell.Header style={{ backgroundColor: "#487CA3" }}>
-        <Group justify="flex-start" align="center" h="100%" px="12px">
-          {isMobile && (
-            <Burger
-              opened={opened}
-              onClick={toggle}
-              aria-label="Toggle navigation"
-            />
-          )}
-          <Text size="24px" style={{ color: "#FFFFFF", fontWeight: "bold" }}>
-            {title}
-          </Text>
+      <AppShell.Header
+        style={{
+          background: "linear-gradient(to right, #487CA3, #2a77d1)",
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+        }}
+      >
+        <Group justify="space-between" px="12px" align="center" h="100%">
+          <Group justify="flex-start">
+            {isMobile && (
+              <Burger
+                opened={opened}
+                onClick={toggle}
+                aria-label="Toggle navigation"
+              />
+            )}
+            <Text size="24px" style={{ color: "#FFFFFF", fontWeight: "bold" }}>
+              {title}
+            </Text>
+          </Group>
+          <Avatar src={avatar} />
         </Group>
       </AppShell.Header>
 
@@ -45,7 +55,17 @@ export function Layout({
         <Navigation />
       </AppShell.Navbar>
 
-      <AppShell.Main style={{ alignItems: "center" }}>{children}</AppShell.Main>
+      <AppShell.Main
+        style={{
+          alignItems: "center",
+          padding: 0,
+          margin: 0,
+          width: "100%",
+          maxWidth: "100%",
+        }}
+      >
+        {children}
+      </AppShell.Main>
     </AppShell>
   );
 }
